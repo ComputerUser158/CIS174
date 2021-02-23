@@ -1,0 +1,41 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "6.1 Assignment";
+}
+
+<div class="text-center">
+    <h1 class="display-4">6.1 Assignment</h1>
+    <p>Learn about stuff, I guess.</p>
+</div>
+
+
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr class="thead-dark">
+            <th>Student(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Index">
+                        @student.FirstName
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Index">
+                        @student.LastName
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Index">
+                        @student.grade
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
