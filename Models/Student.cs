@@ -8,13 +8,18 @@ namespace CIS174.Models
 {
     public class Student
     {
-        public int StudentId { get; set; }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
-        public int grade { get; set; }
+        public string Grade { get; set; }
 
-        public ICollection<StudentListViewModel> StudentListViewModel { get; set; }
+        public Student(string firstName, string lastName, string grade)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Grade = grade;
+        }
+
     }
 }

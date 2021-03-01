@@ -37,15 +37,20 @@ namespace CIS174.Controllers
 
     public class StudentPageController : Controller
     {
-        private StudentContext context { get; set; }
+        [Route("Assignment/{id?}")]
+        public IActionResult Index(int id = 1)
+        {
+            ViewBag.ValueID = id;
 
-        public StudentPageController(StudentContext ctx)
-        {
-            context = ctx;
-        }
-        public IActionResult Index()
-        {
-            return View();
+            List <Student> students = new List<Student>();
+                students.Add(new Student("Michelle", "Alexander", "7th"));
+                students.Add(new Student("Stephen E.", "Ambrose", "6th"));
+                students.Add(new Student("Margaret", "Atwood", "11th"));
+                students.Add(new Student("Jane", "Austen", "12th"));
+                students.Add(new Student("James", "Baldwin", "10th"));
+            
+                
+            return View("Index", students);
         }
     }
 }

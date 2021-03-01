@@ -1,41 +1,58 @@
-﻿@model List<Student>
+﻿@model List<CIS174.Models.Student>
 @{
     ViewData["Title"] = "6.1 Assignment";
 }
 
 <div class="text-center">
     <h1 class="display-4">6.1 Assignment</h1>
-    <p>Learn about stuff, I guess.</p>
+    <p>Welcome.</p>
 </div>
 
-
-<table class="table table-bordered table-sm">
-    <thead>
-        <tr class="thead-dark">
-            <th>Student(s)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var student in Model)
-        {
+@if (ViewBag.ValueID <= 1)
+{
+    <label>You do not have a sufficient access level to view this data.</label>
+}
+else if ((ViewBag.ValueID >= 2) && (ViewBag.ValueID < 8))
+{
+    <table class="table table-bordered table-striped">
+        <thead>
             <tr>
-                <td>
-                    <a asp-action="Index">
-                        @student.FirstName
-                    </a>
-                </td>
-                <td>
-                    <a asp-action="Index">
-                        @student.LastName
-                    </a>
-                </td>
-                <td>
-                    <a asp-action="Index">
-                        @student.grade
-                    </a>
-                </td>
+                <th>First Name</th>
+                <th>Last Name</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (ViewBag.ValueID >= 8 && ViewBag.ValueID <= 10)
+{
+    <label>Hello Admin!</label>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@student.Grade</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
